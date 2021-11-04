@@ -14,12 +14,12 @@ const renderTeam = (team) => {
     const buttonOver = document.createElement("button");
     buttonOver.id = `team-${team.teamId}-over`;
     buttonOver.className = 'team-line-over';
-    buttonOver.textContent = 'OVER';
+    buttonOver.innerHTML = 'OVER<br>';
 
     const buttonUnder = document.createElement("button");
     buttonUnder.id = `team-${team.teamId}-under`;
     buttonUnder.className = 'team-line-under';
-    buttonUnder.textContent = 'UNDER';
+    buttonUnder.innerHTML = 'UNDER<br>';
 
     div.append(teamName, teamLogo, buttonUnder, buttonOver);
     listTeams().appendChild(div);
@@ -29,13 +29,19 @@ const renderTeam = (team) => {
 
 const renderTeamLine = (team) => {
 
-    const teamLine = document.createElement("p")
-    teamLine.id = `teamLine-${team.teamId}`
-    teamLine.className = 'teamLine'
-    teamLine.textContent = team.teamLine
+    const teamLine = document.createElement("p");
+    teamLine.id = `teamLine-${team.teamId}`;
+    teamLine.className = 'teamLine';
+    teamLine.textContent = team.teamLine;
 
     const grabTeamDiv = () => document.getElementById(`team ${team.teamId}`);
-    grabTeamDiv(`team ${team.teamId}`).appendChild(teamLine)
+    grabTeamDiv(`team ${team.teamId}`).appendChild(teamLine);
+
+    const grabButtonOver = () => document.getElementById(`team-${team.teamId}-over`);
+    grabButtonOver(`team-${team.teamId}-over`).innerHTML += `${team.oddsOver}`;
+
+    const grabButtonUnder = () => document.getElementById(`team-${team.teamId}-under`);
+    grabButtonUnder(`team-${team.teamId}-under`).innerHTML += `${team.oddsUnder}`;
 }
 
 const displayTeams = (teams) => {

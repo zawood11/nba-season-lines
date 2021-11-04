@@ -32,6 +32,9 @@ const displayTeams = (teams) => {
     //console.log(teams);
 }
 
+const displayTeamLineInfo = (teamLineInfo) => {
+    console.log(teamLineInfo);
+}
 const fetchTeams = () => {
     fetch("https://api-nba-v1.p.rapidapi.com/teams/league/standard", {
 	"method": "GET",
@@ -48,11 +51,12 @@ const fetchTeams = () => {
 .catch(err => {
 	console.error(err);
 });
-    fetch("http://localhost:3000/teamData")
+    return fetch("http://localhost:3000/teamData")
 .then(res => res.json())
 .then(data => {
     const teamLineInfo = data;
-    //console.log(teamLineInfo)
+    displayTeamLineInfo(teamLineInfo)
+    //console.log(teamLineInfo);
     })
 .catch(err => console.error(err));
 }

@@ -24,7 +24,7 @@ const renderTeam = (team) => {
     div.append(teamName, teamLogo, buttonUnder, buttonOver);
     listTeams().appendChild(div);
    
-    console.log(team);
+    console.log(team.teamId);
 }
 
 const displayTeams = (teams) => {

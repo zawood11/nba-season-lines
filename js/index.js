@@ -1,3 +1,17 @@
+// const renderTeam = (team) => {
+//     const div = document.createElement("div");
+//     div.id = `team ${team.teamId}`;
+//     div.className = 'team-div';
+
+//     const teamName = document.createElement("h2");
+//     teamName.textContent = team.
+// }
+
+const displayTeams = (teams) => {
+    //teams.forEach(team => renderTeam(team));
+    console.log(teams);
+}
+
 const fetchTeams = () => {
     fetch("https://api-nba-v1.p.rapidapi.com/teams/league/standard", {
 	"method": "GET",
@@ -7,7 +21,10 @@ const fetchTeams = () => {
 	}
 })
 .then(res => res.json())
-.then(data => console.log(data))
+.then(data => {
+    const teams = data.api.teams.filter(team => team.nbaFranchise === "1" & team.allStar === "0")
+    displayTeams(teams);
+})
 .catch(err => {
 	console.error(err);
 });

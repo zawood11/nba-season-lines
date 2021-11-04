@@ -11,30 +11,35 @@ const renderTeam = (team) => {
     const teamLogo = document.createElement("img");
     teamLogo.src = team.logo;
 
-    const buttonOver = document.createElement("button")
-    buttonOver.id = `team-${team.teamId}-over`
-    buttonOver.className = 'team-line-over'
-    buttonOver.textContent = 'OVER'
+    const buttonOver = document.createElement("button");
+    buttonOver.id = `team-${team.teamId}-over`;
+    buttonOver.className = 'team-line-over';
+    buttonOver.textContent = 'OVER';
 
-    const buttonUnder = document.createElement("button")
-    buttonUnder.id = `team-${team.teamId}-under`
-    buttonUnder.className = 'team-line-under'
-    buttonUnder.textContent = 'UNDER'
+    const buttonUnder = document.createElement("button");
+    buttonUnder.id = `team-${team.teamId}-under`;
+    buttonUnder.className = 'team-line-under';
+    buttonUnder.textContent = 'UNDER';
 
     div.append(teamName, teamLogo, buttonUnder, buttonOver);
     listTeams().appendChild(div);
    
-    console.log(team);
+    console.log(team.teamId);
 }
 
 const renderTeamLine = (team) => {
-    const {teamId, teamLine, countOver, countUnder} = team;
-    console.log(teamId, teamLine, countOver, countUnder);
+
+    const teamLine = document.createElement("p")
+    teamLine.id = `teamLine-${team.teamId}`
+    teamLine.className = 'teamLine'
+    teamLine.textContent = team.teamLine
+
+    const grabTeamDiv = () => document.getElementById(`team ${team.teamId}`);
+    grabTeamDiv(`team ${team.teamId}`).appendChild(teamLine)
 }
 
 const displayTeams = (teams) => {
     teams.forEach(team => renderTeam(team));
-    //console.log(teams);
 }
 
 const displayTeamLineInfo = (teamLineInfo) => {
@@ -55,17 +60,16 @@ const fetchTeams = () => {
     const teams = data.api.teams.filter(team => team.nbaFranchise === "1" & team.allStar === "0")
     displayTeams(teams);
 })
+.then(() => fetch("http://localhost:3000/teamData"))
+    .then(res => res.json())
+    .then(data => {
+        const teamLineInfo = data;
+        //debugger
+        displayTeamLineInfo(teamLineInfo)
+        })
 .catch(err => {
 	console.error(err);
-});
-    return fetch("http://localhost:3000/teamData")
-.then(res => res.json())
-.then(data => {
-    const teamLineInfo = data;
-    displayTeamLineInfo(teamLineInfo)
-    //console.log(teamLineInfo);
-    })
-.catch(err => console.error(err));
-}
+})
+};
 
 document.addEventListener("DOMContentLoaded", fetchTeams);

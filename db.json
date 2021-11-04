@@ -1,184 +1,184 @@
 {
-"teamData": {
-    "1" : {
+"teamData": [
+{
         "teamId": "1",
         "teamLine": "50",
         "countOver": "0",
         "countUnder": "0"
     },
-    "2" : {
+{
         "teamId": "2",
         "teamLine": "50",
         "countOver": "0",
         "countUnder": "0"
     },
-    "4" : {
+ {
         "teamId": "4",
         "teamLine": "50",
         "countOver": "0",
         "countUnder": "0"
     },
-    "5" : {
+{
         "teamId": "5",
         "teamLine": "50",
         "countOver": "0",
         "countUnder": "0"
     },
-    "6" : {
+{
         "teamId": "6",
         "teamLine": "50",
         "countOver": "0",
         "countUnder": "0"
     },
-    "7" : {
+{
         "teamId": "7",
         "teamLine": "50",
         "countOver": "0",
         "countUnder": "0"
     },
-    "8" : {
+ {
         "teamId": "8",
         "teamLine": "50",
         "countOver": "0",
         "countUnder": "0"
     },
-    "9" : {
+{
         "teamId": "9",
         "teamLine": "50",
         "countOver": "0",
         "countUnder": "0"
     },
-    "10" : {
+{
         "teamId": "10",
         "teamLine": "50",
         "countOver": "0",
         "countUnder": "0"
     },
-    "11" : {
+{
         "teamId": "11",
         "teamLine": "50",
         "countOver": "0",
         "countUnder": "0"
     },
-    "14" : {
+{
         "teamId": "14",
         "teamLine": "50",
         "countOver": "0",
         "countUnder": "0"
     },
-    "15" : {
+ {
         "teamId": "15",
         "teamLine": "50",
         "countOver": "0",
         "countUnder": "0"
     },
-    "16" : {
+{
         "teamId": "16",
         "teamLine": "50",
         "countOver": "0",
         "countUnder": "0"
     },
-    "17" : {
+{
         "teamId": "17",
         "teamLine": "50",
         "countOver": "0",
         "countUnder": "0"
     },
-    "19" : {
+{
         "teamId": "19",
         "teamLine": "50",
         "countOver": "0",
         "countUnder": "0"
     },
-    "20" : {
+{
         "teamId": "20",
         "teamLine": "50",
         "countOver": "0",
         "countUnder": "0"
     },
-    "21" : {
+{
         "teamId": "21",
         "teamLine": "50",
         "countOver": "0",
         "countUnder": "0"
     },
-    "22" : {
+{
         "teamId": "22",
         "teamLine": "50",
         "countOver": "0",
         "countUnder": "0"
     },
-    "23" : {
+{
         "teamId": "23",
         "teamLine": "50",
         "countOver": "0",
         "countUnder": "0"
     },
-    "24" : {
+{
         "teamId": "24",
         "teamLine": "50",
         "countOver": "0",
         "countUnder": "0"
     },
-    "25" : {
+{
         "teamId": "25",
         "teamLine": "50",
         "countOver": "0",
         "countUnder": "0"
     },
-    "26" : {
+{
         "teamId": "26",
         "teamLine": "50",
         "countOver": "0",
         "countUnder": "0"
     },
-    "27" : {
+{
         "teamId": "27",
         "teamLine": "50",
         "countOver": "0",
         "countUnder": "0"
     },
-    "28" : {
+ {
         "teamId": "28",
         "teamLine": "50",
         "countOver": "0",
         "countUnder": "0"
     },
-    "29" : {
+ {
         "teamId": "29",
         "teamLine": "50",
         "countOver": "0",
         "countUnder": "0"
     },
-    "30" : {
+{
         "teamId": "30",
         "teamLine": "50",
         "countOver": "0",
         "countUnder": "0"
     },
-    "31" : {
+{
         "teamId": "31",
         "teamLine": "50",
         "countOver": "0",
         "countUnder": "0"
     },
-    "38" : {
+{
         "teamId": "38",
         "teamLine": "50",
         "countOver": "0",
         "countUnder": "0"
     },
-    "40" : {
+{
         "teamId": "40",
         "teamLine": "50",
         "countOver": "0",
         "countUnder": "0"
     },
-    "41" : {
+{
         "teamId": "41",
         "teamLine": "50",
         "countOver": "0",
         "countUnder": "0"
     }
-    }
+]
 }

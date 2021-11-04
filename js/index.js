@@ -33,8 +33,11 @@ const displayTeams = (teams) => {
 }
 
 const displayTeamLineInfo = (teamLineInfo) => {
-    console.log(teamLineInfo);
+    Object.keys(teamLineInfo).forEach(key =>
+        console.log(teamLineInfo[key]));
+    //console.log(teamLineInfo);
 }
+
 const fetchTeams = () => {
     fetch("https://api-nba-v1.p.rapidapi.com/teams/league/standard", {
 	"method": "GET",

@@ -24,7 +24,7 @@ const renderTeam = (team) => {
     div.append(teamName, teamLogo, buttonUnder, buttonOver);
     listTeams().appendChild(div);
    
-    console.log(team.teamId);
+    console.log(team);
 }
 
 const displayTeams = (teams) => {
@@ -48,6 +48,14 @@ const fetchTeams = () => {
 .catch(err => {
 	console.error(err);
 });
+    fetch("http://localhost:3000/teamData")
+.then(res => res.json())
+.then(data => {
+    const teamLine = data;
+    Object.keys(teamLine).forEach(key =>
+        console.log(key, teamLine[key]));
+    })
+.catch(err => console.error(err));
 }
 
 document.addEventListener("DOMContentLoaded", fetchTeams);

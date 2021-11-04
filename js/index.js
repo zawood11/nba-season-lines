@@ -1,15 +1,24 @@
-// const renderTeam = (team) => {
-//     const div = document.createElement("div");
-//     div.id = `team ${team.teamId}`;
-//     div.className = 'team-div';
+const listTeams = () => document.getElementById("teams");
 
-//     const teamName = document.createElement("h2");
-//     teamName.textContent = team.
-// }
+const renderTeam = (team) => {
+    const div = document.createElement("div");
+    div.id = `team ${team.teamId}`;
+    div.className = 'team-div';
+
+    const teamName = document.createElement("h2");
+    teamName.textContent = team.fullName;
+
+    const teamLogo = document.createElement("img");
+    teamLogo.src = team.logo;
+
+    div.append(teamName, teamLogo);
+    listTeams().appendChild(div);
+   // console.log(team.logo);
+}
 
 const displayTeams = (teams) => {
-    //teams.forEach(team => renderTeam(team));
-    console.log(teams);
+    teams.forEach(team => renderTeam(team));
+    //console.log(teams);
 }
 
 const fetchTeams = () => {
@@ -30,4 +39,4 @@ const fetchTeams = () => {
 });
 }
 
-fetchTeams();
+document.addEventListener("DOMContentLoaded", fetchTeams);

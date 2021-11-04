@@ -2,181 +2,241 @@
 "teamData": [
 {
         "teamId": "1",
-        "teamLine": "50",
+        "teamLine": "47.5",
+        "OddsOver": "-110",
+        "OddsUnder": "-110",
         "countOver": "0",
         "countUnder": "0"
     },
 {
         "teamId": "2",
-        "teamLine": "50",
+        "teamLine": "45.5",
+        "OddsOver": "-120",
+        "OddsUnder": "+100",
         "countOver": "0",
         "countUnder": "0"
     },
  {
         "teamId": "4",
-        "teamLine": "50",
+        "teamLine": "56.5",
+        "OddsOver": "+105",
+        "OddsUnder": "-125",
         "countOver": "0",
         "countUnder": "0"
     },
 {
         "teamId": "5",
-        "teamLine": "50",
+        "teamLine": "38.5",
+        "OddsOver": "-105",
+        "OddsUnder": "-115",
         "countOver": "0",
         "countUnder": "0"
     },
 {
         "teamId": "6",
-        "teamLine": "50",
+        "teamLine": "42.5",
+        "OddsOver": "-115",
+        "OddsUnder": "-105",
         "countOver": "0",
         "countUnder": "0"
     },
 {
         "teamId": "7",
-        "teamLine": "50",
+        "teamLine": "26.5",
+        "OddsOver": "-105",
+        "OddsUnder": "-115",
         "countOver": "0",
         "countUnder": "0"
     },
  {
         "teamId": "8",
-        "teamLine": "50",
+        "teamLine": "48.5",
+        "OddsOver": "-105",
+        "OddsUnder": "-115",
         "countOver": "0",
         "countUnder": "0"
     },
 {
         "teamId": "9",
-        "teamLine": "50",
+        "teamLine": "47.5",
+        "OddsOver": "-120",
+        "OddsUnder": "+100",
         "countOver": "0",
         "countUnder": "0"
     },
 {
         "teamId": "10",
-        "teamLine": "50",
+        "teamLine": "24.5",
+        "OddsOver": "-120",
+        "OddsUnder": "+100",
         "countOver": "0",
         "countUnder": "0"
     },
 {
         "teamId": "11",
-        "teamLine": "50",
+        "teamLine": "48.5",
+        "OddsOver": "-110",
+        "OddsUnder": "-110",
         "countOver": "0",
         "countUnder": "0"
     },
 {
         "teamId": "14",
-        "teamLine": "50",
+        "teamLine": "27.5",
+        "OddsOver": "+100",
+        "OddsUnder": "-120",
         "countOver": "0",
         "countUnder": "0"
     },
  {
         "teamId": "15",
-        "teamLine": "50",
+        "teamLine": "42.5",
+        "OddsOver": "-115",
+        "OddsUnder": "-105",
         "countOver": "0",
         "countUnder": "0"
     },
 {
         "teamId": "16",
-        "teamLine": "50",
+        "teamLine": "45.5",
+        "OddsOver": "-105",
+        "OddsUnder": "-115",
         "countOver": "0",
         "countUnder": "0"
     },
 {
         "teamId": "17",
-        "teamLine": "50",
+        "teamLine": "52.5",
+        "OddsOver": "-110",
+        "OddsUnder": "-110",
         "countOver": "0",
         "countUnder": "0"
     },
 {
         "teamId": "19",
-        "teamLine": "50",
+        "teamLine": "41.5",
+        "OddsOver": "-120",
+        "OddsUnder": "+100",
         "countOver": "0",
         "countUnder": "0"
     },
 {
         "teamId": "20",
-        "teamLine": "50",
+        "teamLine": "48.5",
+        "OddsOver": "-110",
+        "OddsUnder": "-110",
         "countOver": "0",
         "countUnder": "0"
     },
 {
         "teamId": "21",
-        "teamLine": "50",
+        "teamLine": "54.5",
+        "OddsOver": "-115",
+        "OddsUnder": "-105",
         "countOver": "0",
         "countUnder": "0"
     },
 {
         "teamId": "22",
-        "teamLine": "50",
+        "teamLine": "35.5",
+        "OddsOver": "-110",
+        "OddsUnder": "-110",
         "countOver": "0",
         "countUnder": "0"
     },
 {
         "teamId": "23",
-        "teamLine": "50",
+        "teamLine": "39.5",
+        "OddsOver": "-110",
+        "OddsUnder": "-110",
         "countOver": "0",
         "countUnder": "0"
     },
 {
         "teamId": "24",
-        "teamLine": "50",
+        "teamLine": "41.5",
+        "OddsOver": "-125",
+        "OddsUnder": "+105",
         "countOver": "0",
         "countUnder": "0"
     },
 {
         "teamId": "25",
-        "teamLine": "50",
+        "teamLine": "23.5",
+        "OddsOver": "-105",
+        "OddsUnder": "-115",
         "countOver": "0",
         "countUnder": "0"
     },
 {
         "teamId": "26",
-        "teamLine": "50",
+        "teamLine": "22.5",
+        "OddsOver": "-110",
+        "OddsUnder": "-110",
         "countOver": "0",
         "countUnder": "0"
     },
 {
         "teamId": "27",
-        "teamLine": "50",
+        "teamLine": "50.5",
+        "OddsOver": "-105",
+        "OddsUnder": "-115",
         "countOver": "0",
         "countUnder": "0"
     },
  {
         "teamId": "28",
-        "teamLine": "50",
+        "teamLine": "51.5",
+        "OddsOver": "-125",
+        "OddsUnder": "+105",
         "countOver": "0",
         "countUnder": "0"
     },
  {
         "teamId": "29",
-        "teamLine": "50",
+        "teamLine": "44.5",
+        "OddsOver": "-110",
+        "OddsUnder": "-110",
         "countOver": "0",
         "countUnder": "0"
     },
 {
         "teamId": "30",
-        "teamLine": "50",
+        "teamLine": "28.5",
+        "OddsOver": "-140",
+        "OddsUnder": "+115",
         "countOver": "0",
         "countUnder": "0"
     },
 {
         "teamId": "31",
-        "teamLine": "50",
+        "teamLine": "36.5",
+        "OddsOver": "-105",
+        "OddsUnder": "-115",
         "countOver": "0",
         "countUnder": "0"
     },
 {
         "teamId": "38",
-        "teamLine": "50",
+        "teamLine": "35.5",
+        "OddsOver": "-110",
+        "OddsUnder": "-110",
         "countOver": "0",
         "countUnder": "0"
     },
 {
         "teamId": "40",
-        "teamLine": "50",
+        "teamLine": "52.5",
+        "OddsOver": "-110",
+        "OddsUnder": "-110",
         "countOver": "0",
         "countUnder": "0"
     },
 {
         "teamId": "41",
-        "teamLine": "50",
+        "teamLine": "33.5",
+        "OddsOver": "-120",
+        "OddsUnder": "+100",
         "countOver": "0",
         "countUnder": "0"
     }

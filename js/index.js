@@ -51,9 +51,8 @@ const fetchTeams = () => {
     fetch("http://localhost:3000/teamData")
 .then(res => res.json())
 .then(data => {
-    const teamLine = data;
-    Object.keys(teamLine).forEach(key =>
-        console.log(key, teamLine[key]));
+    const teamLineInfo = data;
+    //console.log(teamLineInfo)
     })
 .catch(err => console.error(err));
 }

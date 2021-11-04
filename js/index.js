@@ -27,14 +27,18 @@ const renderTeam = (team) => {
     console.log(team);
 }
 
+const renderTeamLine = (team) => {
+    const {teamId, teamLine, countOver, countUnder} = team;
+    console.log(teamId, teamLine, countOver, countUnder);
+}
+
 const displayTeams = (teams) => {
     teams.forEach(team => renderTeam(team));
     //console.log(teams);
 }
 
 const displayTeamLineInfo = (teamLineInfo) => {
-    Object.keys(teamLineInfo).forEach(key =>
-        console.log(teamLineInfo[key]));
+    teamLineInfo.forEach(team => renderTeamLine(team))
     //console.log(teamLineInfo);
 }
 

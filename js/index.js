@@ -11,9 +11,20 @@ const renderTeam = (team) => {
     const teamLogo = document.createElement("img");
     teamLogo.src = team.logo;
 
-    div.append(teamName, teamLogo);
+    const buttonOver = document.createElement("button")
+    buttonOver.id = `team-${team.teamId}-over`
+    buttonOver.className = 'team-line-over'
+    buttonOver.textContent = 'OVER'
+
+    const buttonUnder = document.createElement("button")
+    buttonUnder.id = `team-${team.teamId}-under`
+    buttonUnder.className = 'team-line-under'
+    buttonUnder.textContent = 'UNDER'
+
+    div.append(teamName, teamLogo, buttonUnder, buttonOver);
     listTeams().appendChild(div);
-   // console.log(team.logo);
+   
+    console.log(team);
 }
 
 const displayTeams = (teams) => {

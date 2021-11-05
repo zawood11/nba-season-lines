@@ -53,6 +53,17 @@ const renderTeamLine = (team) => {
     //add over/unders odds to button text
     grabButtonOver(`team-${team.teamId}-over`).innerHTML += `${team.oddsOver}`;
     grabButtonUnder(`team-${team.teamId}-under`).innerHTML += `${team.oddsUnder}`;
+
+    //counter functions to increase counts on button click
+    const plusOver = () => alert('clicked!');//team.countOver.value = parseInt(team.countOver.value) + 1;
+    const plusUnder = () => alert('clicked!');
+
+    //add eventlisteners to over/under buttons
+    grabButtonOver(`team-${team.teamId}-over`).addEventListener('click', plusOver)
+    grabButtonUnder(`team-${team.teamId}-under`).addEventListener('click', plusUnder)
+
+    
+    
 }
 
 //iterate over API team data and pass to renderTeam

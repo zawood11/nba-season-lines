@@ -5,7 +5,7 @@ const renderTeam = (team) => {
     const div = document.createElement("div");
     div.id = `team ${team.teamId}`;
     div.className = 'team-div';
-
+    
     //create teamname H2
     const teamName = document.createElement("h2");
     teamName.textContent = team.fullName;
@@ -55,16 +55,43 @@ const renderTeamLine = (team) => {
     grabButtonUnder(`team-${team.teamId}-under`).innerHTML += `${team.oddsUnder}`;
 
     //counter functions to increase counts on button click
-    const plusOver = () => alert('clicked!');//team.countOver.value = parseInt(team.countOver.value) + 1;
-    const plusUnder = () => alert('clicked!');
+    const plusOver = () => {
+        const teamId = team.teamId;
+        let countOver = parseInt(team.countOver);
+        countOver++;
+        console.log(countOver);
+        
+        const countOverObj = {
+            countOver: countOver
+        }
+        const patchData = {
+            method: 'PATCH',
+            headers: {
+             'Content-type': 'application/json'
+            },
+            body: JSON.stringify(countOverObj)
+           }
+
+        const updateCounts = (teamId) => {}
+            fetch(`http://localhost:3000/teamData/${teamId}`, patchData)
+            .then(res => res.json())
+            .then(data => console.log(data))
+
+            updateCounts(teamId);
+        }
+        
+        
 
     //add eventlisteners to over/under buttons
-    grabButtonOver(`team-${team.teamId}-over`).addEventListener('click', plusOver)
-    grabButtonUnder(`team-${team.teamId}-under`).addEventListener('click', plusUnder)
+    grabButtonOver(`team-${team.teamId}-over`).addEventListener('click', plusOver);
+    //grabButtonUnder(`team-${team.teamId}-under`).addEventListener('click', plusUnder)
+    }
 
-    
-    
-}
+
+
+    //const plusUnder = () => alert('clicked!');
+
+
 
 //iterate over API team data and pass to renderTeam
 const displayTeams = (teams) => {
@@ -77,7 +104,7 @@ const displayTeamLineInfo = (teamLineInfo) => {
     //console.log(teamLineInfo);
 }
 
-//fetch API & JSON data
+//fetch GET API & JSON data
 const fetchTeams = () => {
     fetch("https://api-nba-v1.p.rapidapi.com/teams/league/standard", {
 	"method": "GET",
@@ -97,11 +124,15 @@ const fetchTeams = () => {
         const teamLineInfo = data;
         //debugger
         displayTeamLineInfo(teamLineInfo)
+        console.log(teamLineInfo)
         })
 .catch(err => {
 	console.error(err);
 })
 };
+
+//fetch PATCH to increment countOver/CountUnder
+
 
 //Run fetch on DOMContentLoaded
 document.addEventListener("DOMContentLoaded", fetchTeams);

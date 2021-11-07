@@ -54,16 +54,17 @@ const renderTeamLine = (team) => {
     grabButtonOver(`team-${team.teamId}-over`).innerHTML += `${team.oddsOver}`;
     grabButtonUnder(`team-${team.teamId}-under`).innerHTML += `${team.oddsUnder}`;
 
-    //counter functions to increase counts on button click
+    //counter function to increase countOver in db.json
     const plusOver = () => {
         const teamId = team.teamId;
         let countOver = parseInt(team.countOver);
         countOver++;
-        console.log(countOver);
-        
+        //console.log(countOver);
+
         const countOverObj = {
             countOver: countOver
         }
+
         const patchData = {
             method: 'PATCH',
             headers: {
@@ -71,21 +72,50 @@ const renderTeamLine = (team) => {
             },
             body: JSON.stringify(countOverObj)
            }
-
-        const updateCounts = (teamId) => {}
+        
+        const updateCounts = (teamId) => {
             fetch(`http://localhost:3000/teamData/${teamId}`, patchData)
             .then(res => res.json())
             .then(data => console.log(data))
+        }
 
-            updateCounts(teamId);
+        updateCounts(teamId);
+        }
+
+    //counter function to incrase countUnder in db.json
+    const plusUnder = () => {
+        const teamId = team.teamId;
+        let countUnder = parseInt(team.countUnder);
+        countUnder++;
+        //console.log(countUnder);
+
+        const countUnderObj = {
+            countUnder: countUnder
+        }
+
+        const patchData = {
+            method: 'PATCH',
+            headers: {
+             'Content-type': 'application/json'
+            },
+            body: JSON.stringify(countUnderObj)
+           }
+        
+        const updateCounts = (teamId) => {
+            fetch(`http://localhost:3000/teamData/${teamId}`, patchData)
+            .then(res => res.json())
+            .then(data => console.log(data))
         }
         
-        
+        updateCounts(teamId);
+        }
 
     //add eventlisteners to over/under buttons
     grabButtonOver(`team-${team.teamId}-over`).addEventListener('click', plusOver);
-    //grabButtonUnder(`team-${team.teamId}-under`).addEventListener('click', plusUnder)
+    grabButtonUnder(`team-${team.teamId}-under`).addEventListener('click', plusUnder)
     }
+
+
 
 
 

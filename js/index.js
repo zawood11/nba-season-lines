@@ -72,7 +72,7 @@ const renderTeamLine = (team) => {
             },
             body: JSON.stringify(countOverObj)
            }
-        
+
         const updateCounts = (teamId) => {
             fetch(`http://localhost:3000/teamData/${teamId}`, patchData)
             .then(res => res.json())
@@ -80,7 +80,7 @@ const renderTeamLine = (team) => {
         }
 
         updateCounts(teamId);
-        }
+    }
 
     //counter function to incrase countUnder in db.json
     const plusUnder = () => {
@@ -106,7 +106,7 @@ const renderTeamLine = (team) => {
             .then(res => res.json())
             .then(data => console.log(data))
         }
-        
+
         updateCounts(teamId);
         }
 
@@ -114,14 +114,6 @@ const renderTeamLine = (team) => {
     grabButtonOver(`team-${team.teamId}-over`).addEventListener('click', plusOver);
     grabButtonUnder(`team-${team.teamId}-under`).addEventListener('click', plusUnder)
     }
-
-
-
-
-
-    //const plusUnder = () => alert('clicked!');
-
-
 
 //iterate over API team data and pass to renderTeam
 const displayTeams = (teams) => {
@@ -160,9 +152,6 @@ const fetchTeams = () => {
 	console.error(err);
 })
 };
-
-//fetch PATCH to increment countOver/CountUnder
-
 
 //Run fetch on DOMContentLoaded
 document.addEventListener("DOMContentLoaded", fetchTeams);

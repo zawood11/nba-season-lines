@@ -6,8 +6,8 @@
       "teamLine": "47.5",
       "oddsOver": "-110",
       "oddsUnder": "-110",
-      "countOver": 21,
-      "countUnder": 7
+      "countOver": 24,
+      "countUnder": 8
     },
     {
       "id": "2",
@@ -15,8 +15,8 @@
       "teamLine": "45.5",
       "oddsOver": "-120",
       "oddsUnder": "+100",
-      "countOver": "0",
-      "countUnder": "0"
+      "countOver": 1,
+      "countUnder": 1
     },
     {
       "id": "4",

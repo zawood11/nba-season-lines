@@ -1,5 +1,9 @@
 const listTeams = () => document.getElementById("teams");
+const searchTeams = () => document.getElementById("search-teams")
+let teamArr = [];
+let teamLineArr = [];
 
+//add data from JSON server and event listeners & other actions moving forward
 const renderTeam = (team) => {
     //create teamDiv container
     const div = document.createElement("div");
@@ -29,11 +33,10 @@ const renderTeam = (team) => {
     //add elements to div container
     div.append(teamName, teamLogo, buttonUnder, buttonOver);
     listTeams().appendChild(div);
-   
+       
     //console.log(team);
 }
 
-//add data from JSON server and event listeners & other actions moving forward
 const renderTeamLine = (team) => {
     //grab elements
     const grabTeamDiv = () => document.getElementById(`team ${team.teamId}`);
@@ -54,76 +57,69 @@ const renderTeamLine = (team) => {
     grabButtonOver(`team-${team.teamId}-over`).innerHTML += `${team.oddsOver}`;
     grabButtonUnder(`team-${team.teamId}-under`).innerHTML += `${team.oddsUnder}`;
 
-    //counter function to increase countOver in db.json
-    const plusOver = () => {
-        const teamId = team.teamId;
-        let countOver = parseInt(team.countOver);
-        countOver++;
-        //console.log(countOver);
-
-        const countOverObj = {
-            countOver: countOver
-        }
-
-        const patchData = {
-            method: 'PATCH',
-            headers: {
-             'Content-type': 'application/json'
-            },
-            body: JSON.stringify(countOverObj)
-           }
-
-        const updateCounts = (teamId) => {
-            fetch(`http://localhost:3000/teamData/${teamId}`, patchData)
-            .then(res => res.json())
-            .then(data => console.log(data))
-        }
-
-        updateCounts(teamId);
+//counter function to increase countOver in db.json
+const plusOver = () => {
+    const teamId = team.teamId;
+    let countOver = parseInt(team.countOver);
+    countOver++;
+    //console.log(countOver);
+    const countOverObj = {
+        countOver: countOver
     }
-
-    //counter function to incrase countUnder in db.json
-    const plusUnder = () => {
-        const teamId = team.teamId;
-        let countUnder = parseInt(team.countUnder);
-        countUnder++;
-        //console.log(countUnder);
-
-        const countUnderObj = {
-            countUnder: countUnder
-        }
-
-        const patchData = {
-            method: 'PATCH',
-            headers: {
-             'Content-type': 'application/json'
-            },
-            body: JSON.stringify(countUnderObj)
-           }
-        
-        const updateCounts = (teamId) => {
-            fetch(`http://localhost:3000/teamData/${teamId}`, patchData)
-            .then(res => res.json())
-            .then(data => console.log(data))
-        }
-
-        updateCounts(teamId);
-        }
-
-    //add eventlisteners to over/under buttons
-    grabButtonOver(`team-${team.teamId}-over`).addEventListener('click', plusOver);
-    grabButtonUnder(`team-${team.teamId}-under`).addEventListener('click', plusUnder)
+    const patchData = {
+        method: 'PATCH',
+        headers: {
+         'Content-type': 'application/json'
+        },
+        body: JSON.stringify(countOverObj)
+       }
+    const updateCounts = (teamId) => {
+        fetch(`http://localhost:3000/teamData/${teamId}`, patchData)
+        .then(res => res.json())
+        .then(data => console.log(data))
     }
+    updateCounts(teamId);
+}
+
+//counter function to incrase countUnder in db.json
+const plusUnder = () => {
+    const teamId = team.teamId;
+    let countUnder = parseInt(team.countUnder);
+    countUnder++;
+    //console.log(countUnder);
+    const countUnderObj = {
+        countUnder: countUnder
+    }
+    const patchData = {
+        method: 'PATCH',
+        headers: {
+         'Content-type': 'application/json'
+        },
+        body: JSON.stringify(countUnderObj)
+       }
+    
+    const updateCounts = (teamId) => {
+        fetch(`http://localhost:3000/teamData/${teamId}`, patchData)
+        .then(res => res.json())
+        .then(data => console.log(data))
+    }
+    updateCounts(teamId);
+}
+//add eventlisteners to over/under buttons
+grabButtonOver(`team-${team.teamId}-over`).addEventListener('click', plusOver);
+grabButtonUnder(`team-${team.teamId}-under`).addEventListener('click', plusUnder)
+}
 
 //iterate over API team data and pass to renderTeam
 const displayTeams = (teams) => {
+    teamArr = teams;
     teams.forEach(team => renderTeam(team));
 }
 
 //iterate over JSON data and pass to renderTeamLine
 const displayTeamLineInfo = (teamLineInfo) => {
+    teamLineArr = teamLineInfo;
     teamLineInfo.forEach(team => renderTeamLine(team))
-    //console.log(teamLineInfo);
 }
 
 //fetch GET API & JSON data
@@ -153,5 +149,38 @@ const fetchTeams = () => {
 })
 };
 
+const handleSearch = (e) => {
+    const searchText = e.target.value;
+    listTeams().innerHTML = "";
+    //invoke renderTeam on filtered teams from search
+    const searchedTeams = teamArr.filter(team => team.fullName.toLowerCase().startsWith(searchText) || team.nickname.toLowerCase().startsWith(searchText))
+    if(searchText === "" || searchedTeams.length === 0) {
+        noResults();
+    } else {
+        searchedTeams.forEach(renderTeam)
+        //invoke renderTeamLines on filtered teams from search
+        const searchedTeamIds = searchedTeams.map(team => team.teamId)
+        const searchedTeamLines = teamLineArr.filter(team => searchedTeamIds.includes(team.teamId))
+        searchedTeamLines.forEach(renderTeamLine);
+    }
+    searchTeams().value = "";
+}
+
+const noResults = () => {
+    const div = document.createElement("div");
+    div.className = 'card-alert-warning';
+
+    const header = document.createElement("h2")
+    header.textContent = "No teams found, please check your search and try again."
+
+    div.append(header);
+    listTeams().appendChild(div);
+}
+
+const handlePageLoaded = () => {
+    fetchTeams();
+    searchTeams().addEventListener("change", handleSearch)
+}
+
 //Run fetch on DOMContentLoaded
-document.addEventListener("DOMContentLoaded", fetchTeams);
+document.addEventListener("DOMContentLoaded", handlePageLoaded);

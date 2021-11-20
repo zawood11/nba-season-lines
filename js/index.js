@@ -49,8 +49,29 @@ const renderTeamLine = (team) => {
     teamLine.className = 'teamLine';
     teamLine.textContent = team.teamLine;
 
+    //create percentage bar
+    const pctBar = document.createElement('div');
+    pctBar.id = `pctBar-${team.teamId}`;
+    pctBar.className = 'pctBar';
+
+    //create pctUnder
+    const pctUnder = document.createElement("div");
+    pctUnder.id = `pctUnder-${team.teamId}`;
+    pctUnder.className = 'pctUnder';
+    pctUnder.innerHTML = '%'
+
+    //create pctOver
+    const pctOver = document.createElement("div");
+    pctOver.id = `pctOver-${team.teamId}`;
+    pctOver.className = 'pctOver';
+    pctOver.innerHTML = '%';
+
+    grabTeamDiv().append(teamLine, pctBar)
+    const grabPctBar = () => document.getElementById(`pctBar-${team.teamId}`);
+    grabPctBar().append(pctUnder, pctOver);
+    //grabPctBar().append(pctUnder, pctOver);
     //insert teamLine between Over/Under buttons
-    grabTeamDiv().append(teamLine)
+    grabTeamDiv().append(teamLine, pctBar)
     //const insertAfter = (referenceNode, newNode) => referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
     //insertAfter(grabButtonUnder(`team-${team.teamId}-under`), teamLine);
 

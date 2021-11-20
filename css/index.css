@@ -1,7 +1,14 @@
-html {
-    font-family: Roboto,Arial,sans-serif;
+#title {
+    font-size: 48pt;
+    text-align: center;
 }
-
+#search {
+    text-align: center;
+}
+#search-teams {
+    text-align: center;
+    font-size: 24pt;
+}
 .team-div {
     position: relative;
     background:orange;
@@ -13,11 +20,12 @@ html {
     height: 100%;
     border: 2px solid black !important;
 }
-h2 {
-    top: 0;
+.team-div h2 {
+    font-size: 24px;
+    text-align: center;
 }
 img {
-    top: 10;
+    top: 10%;
     height: 10%;
     width: 10%;
 }
@@ -25,15 +33,17 @@ img {
 .teamLine {
     position: absolute;
     left: 500px;
-    top: 50%;
+    top: 40%;
+    font-size: 36pt;
 }
 
 button {
     font-size: 24px;
+    width: 20%
 }
 .team-line-under {
     position: absolute;
-    left: 300px;
+    left: 200px;
     top: 30%;
 }
 .team-line-over {

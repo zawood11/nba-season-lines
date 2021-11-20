@@ -33,8 +33,6 @@ const renderTeam = (team) => {
     //add elements to div container
     teamDiv.append(teamName, teamLogo, buttonUnder, buttonOver);
     listTeams().appendChild(teamDiv);
-       
-    //console.log(team);
 }
 
 const renderTeamLine = (team) => {
@@ -67,13 +65,16 @@ const renderTeamLine = (team) => {
     const pctUnder = document.createElement("div");
     pctUnder.id = `pctUnder-${team.teamId}`;
     pctUnder.className = 'pctUnder';
-    pctUnder.innerHTML = `${overPct}%`;
+    pctUnder.innerHTML = `${underPct}%`;
+    pctUnder.style.width = `${underPct}%`;
 
     //create pctOver
     const pctOver = document.createElement("div");
     pctOver.id = `pctOver-${team.teamId}`;
     pctOver.className = 'pctOver';
-    pctOver.innerHTML = `${underPct}%`;
+    pctOver.innerHTML = `${overPct}%`;
+    let overWidth = 100 - underPct;
+    pctOver.style.width = `${overWidth}%`
 
     //append teamLine, pctBar
     grabTeamDiv().append(teamLine, pctBar)
@@ -94,8 +95,25 @@ const renderTeamLine = (team) => {
 const plusOver = () => {
     //const teamId = team.teamId;
     //const updatedTeam = teamLineArr.find(team => team.teamId === teamId);
+    //update countOver
     updatedTeam.countOver++;
-    let countOver = parseInt(updatedTeam.countOver);
+    let countOver = updatedTeam.countOver;
+
+    //update total count, overpct, underpct
+    let updatedTotalCount = updatedTeam.countOver + updatedTeam.countUnder;
+    let updatedOverPct = Math.trunc((updatedTeam.countOver/updatedTotalCount)*100);
+    if (isNaN(updatedOverPct)) updatedOverPct = 0;
+    let updatedUnderPct = Math.trunc((updatedTeam.countUnder/updatedTotalCount)*100);
+    if (isNaN(updatedUnderPct)) updatedUnderPct = 0;
+
+    //over button
+    pctOver.innerHTML = `${updatedOverPct}%`;
+    let updatedOverWidth = 100 - updatedUnderPct;
+    pctOver.style.width = `${updatedOverWidth}%`;
+
+    //under button
+    pctUnder.innerHTML = `${updatedUnderPct}%`;
+    pctUnder.style.width = `${updatedUnderPct}%`;
 
     //fetch PATCH to JSON
     const countOverObj = {
@@ -118,10 +136,27 @@ const plusOver = () => {
 
 //counter function to incrase countUnder in db.json
 const plusUnder = () => {
-    const teamId = team.teamId;
-    const updatedTeam = teamLineArr.find(team => team.teamId === teamId);
+    //const teamId = team.teamId;
+    //const updatedTeam = teamLineArr.find(team => team.teamId === teamId);
+    //update countunder
     updatedTeam.countUnder++;
-    let countUnder = parseInt(updatedTeam.countUnder);
+    let countUnder = updatedTeam.countUnder;
+    
+    // update total count, overpct, underpct
+    let updatedTotalCount = updatedTeam.countOver + updatedTeam.countUnder;
+    let updatedOverPct = Math.trunc((updatedTeam.countOver/updatedTotalCount)*100);
+    if (isNaN(updatedOverPct)) updatedOverPct = 0;
+    let updatedUnderPct = Math.trunc((updatedTeam.countUnder/updatedTotalCount)*100);
+    if (isNaN(updatedUnderPct)) updatedUnderPct = 0;
+
+    //over button
+    pctOver.innerHTML = `${updatedOverPct}%`;
+    let updatedOverWidth = 100 - updatedUnderPct;
+    pctOver.style.width = `${updatedOverWidth}%`;
+
+    //under button
+    pctUnder.innerHTML = `${updatedUnderPct}%`;
+    pctUnder.style.width = `${updatedUnderPct}%`;
     
     const countUnderObj = {
         countUnder

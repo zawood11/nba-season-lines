@@ -6,10 +6,10 @@ let teamLineArr = [];
 //add data from JSON server and event listeners & other actions moving forward
 const renderTeam = (team) => {
     //create teamDiv container
-    const div = document.createElement("div");
-    div.id = `team ${team.teamId}`;
-    div.className = 'team-div';
-    
+    const teamDiv = document.createElement("div");
+    teamDiv.id = `team-${team.teamId}`;
+    teamDiv.className = 'team-div';
+
     //create teamname H2
     const teamName = document.createElement("h2");
     teamName.textContent = team.fullName;
@@ -31,15 +31,15 @@ const renderTeam = (team) => {
     buttonUnder.innerHTML = 'UNDER<br>';
 
     //add elements to div container
-    div.append(teamName, teamLogo, buttonUnder, buttonOver);
-    listTeams().appendChild(div);
+    teamDiv.append(teamName, teamLogo, buttonUnder, buttonOver);
+    listTeams().appendChild(teamDiv);
        
     //console.log(team);
 }
 
 const renderTeamLine = (team) => {
     //grab elements
-    const grabTeamDiv = () => document.getElementById(`team ${team.teamId}`);
+    const grabTeamDiv = () => document.getElementById(`team-${team.teamId}`);
     const grabButtonOver = () => document.getElementById(`team-${team.teamId}-over`);
     const grabButtonUnder = () => document.getElementById(`team-${team.teamId}-under`);
 
@@ -50,8 +50,9 @@ const renderTeamLine = (team) => {
     teamLine.textContent = team.teamLine;
 
     //insert teamLine between Over/Under buttons
-    const insertAfter = (referenceNode, newNode) => referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
-    insertAfter(grabButtonUnder(`team-${team.teamId}-under`), teamLine);
+    grabTeamDiv().append(teamLine)
+    //const insertAfter = (referenceNode, newNode) => referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
+    //insertAfter(grabButtonUnder(`team-${team.teamId}-under`), teamLine);
 
     //add over/unders odds to button text
     grabButtonOver(`team-${team.teamId}-over`).innerHTML += `${team.oddsOver}`;
@@ -60,11 +61,13 @@ const renderTeamLine = (team) => {
 //counter function to increase countOver in db.json
 const plusOver = () => {
     const teamId = team.teamId;
-    let countOver = parseInt(team.countOver);
-    countOver++;
-    //console.log(countOver);
+    const updatedTeam = teamLineArr.find(team => team.teamId === teamId);
+    updatedTeam.countOver++;
+    let countOver = parseInt(updatedTeam.countOver);
+    
+    
     const countOverObj = {
-        countOver: countOver
+        countOver
     }
     const patchData = {
         method: 'PATCH',
@@ -84,11 +87,12 @@ const plusOver = () => {
 //counter function to incrase countUnder in db.json
 const plusUnder = () => {
     const teamId = team.teamId;
-    let countUnder = parseInt(team.countUnder);
-    countUnder++;
-    //console.log(countUnder);
+    const updatedTeam = teamLineArr.find(team => team.teamId === teamId);
+    updatedTeam.countUnder++;
+    let countUnder = parseInt(updatedTeam.countUnder);
+    
     const countUnderObj = {
-        countUnder: countUnder
+        countUnder
     }
     const patchData = {
         method: 'PATCH',
@@ -149,6 +153,7 @@ const fetchTeams = () => {
 })
 };
 
+//render team and teamline info based on search
 const handleSearch = (e) => {
     const searchText = e.target.value;
     listTeams().innerHTML = "";
@@ -166,6 +171,7 @@ const handleSearch = (e) => {
     searchTeams().value = "";
 }
 
+//invoke if no search results are found
 const noResults = () => {
     const div = document.createElement("div");
     div.className = 'card-alert-warning';
@@ -177,6 +183,7 @@ const noResults = () => {
     listTeams().appendChild(div);
 }
 
+//fetch API and JSON data, eventlistener on search field
 const handlePageLoaded = () => {
     fetchTeams();
     searchTeams().addEventListener("change", handleSearch)

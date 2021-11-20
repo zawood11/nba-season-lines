@@ -1,0 +1,43 @@
+html {
+    font-family: Roboto,Arial,sans-serif;
+}
+
+.team-div {
+    position: relative;
+    background:orange;
+    overflow: hidden;
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    width: 100%;
+    height: 100%;
+    border: 2px solid black !important;
+}
+h2 {
+    top: 0;
+}
+img {
+    top: 10;
+    height: 10%;
+    width: 10%;
+}
+
+.teamLine {
+    position: absolute;
+    left: 500px;
+    top: 50%;
+}
+
+button {
+    font-size: 24px;
+}
+.team-line-under {
+    position: absolute;
+    left: 300px;
+    top: 30%;
+}
+.team-line-over {
+    position: absolute;
+    left: 700px;
+    top: 30%;
+}

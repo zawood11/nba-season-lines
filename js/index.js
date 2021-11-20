@@ -81,20 +81,12 @@ const renderTeamLine = (team) => {
     //append pctUnder, pctOver to pctBar
     const grabPctBar = () => document.getElementById(`pctBar-${team.teamId}`);
     grabPctBar().append(pctUnder, pctOver);
-    //grabPctBar().append(pctUnder, pctOver);
-    //append teamLine, pctBAR
-    //grabTeamDiv().append(teamLine, pctBar)
-    //const insertAfter = (referenceNode, newNode) => referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
-    //insertAfter(grabButtonUnder(`team-${team.teamId}-under`), teamLine);
 
     //add over/unders odds to button text
     grabButtonOver(`team-${team.teamId}-over`).innerHTML += `${team.oddsOver}`;
     grabButtonUnder(`team-${team.teamId}-under`).innerHTML += `${team.oddsUnder}`;
 
-//counter function to increase countOver in db.json
 const plusOver = () => {
-    //const teamId = team.teamId;
-    //const updatedTeam = teamLineArr.find(team => team.teamId === teamId);
     //update countOver
     updatedTeam.countOver++;
     let countOver = updatedTeam.countOver;
@@ -136,8 +128,6 @@ const plusOver = () => {
 
 //counter function to incrase countUnder in db.json
 const plusUnder = () => {
-    //const teamId = team.teamId;
-    //const updatedTeam = teamLineArr.find(team => team.teamId === teamId);
     //update countunder
     updatedTeam.countUnder++;
     let countUnder = updatedTeam.countUnder;
@@ -176,6 +166,7 @@ const plusUnder = () => {
     }
     updateCounts(teamId);
 }
+
 //add eventlisteners to over/under buttons
 grabButtonOver(`team-${team.teamId}-over`).addEventListener('click', plusOver);
 grabButtonUnder(`team-${team.teamId}-under`).addEventListener('click', plusUnder)

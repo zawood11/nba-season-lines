@@ -7,7 +7,7 @@
       "oddsOver": "-110",
       "oddsUnder": "-110",
       "countOver": 5,
-      "countUnder": 11
+      "countUnder": 8
     },
     {
       "id": "2",
@@ -25,7 +25,7 @@
       "oddsOver": "+105",
       "oddsUnder": "-125",
       "countOver": "0",
-      "countUnder": "0"
+      "countUnder": 1
     },
     {
       "id": "5",

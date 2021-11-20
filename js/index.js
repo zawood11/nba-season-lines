@@ -42,6 +42,15 @@ const renderTeamLine = (team) => {
     const grabTeamDiv = () => document.getElementById(`team-${team.teamId}`);
     const grabButtonOver = () => document.getElementById(`team-${team.teamId}-over`);
     const grabButtonUnder = () => document.getElementById(`team-${team.teamId}-under`);
+    
+    //percentage bar data
+    const teamId = team.teamId;
+    const updatedTeam = teamLineArr.find(team => team.teamId === teamId);
+    let totalCount = updatedTeam.countOver + updatedTeam.countUnder;
+    let overPct = Math.trunc((updatedTeam.countOver/totalCount)*100);
+    if (isNaN(overPct)) overPct = 0;
+    let underPct = Math.trunc((updatedTeam.countUnder/totalCount)*100);
+    if (isNaN(underPct)) underPct = 0;
 
     //create teamLine element
     const teamLine = document.createElement("p");
@@ -58,20 +67,22 @@ const renderTeamLine = (team) => {
     const pctUnder = document.createElement("div");
     pctUnder.id = `pctUnder-${team.teamId}`;
     pctUnder.className = 'pctUnder';
-    pctUnder.innerHTML = '%'
+    pctUnder.innerHTML = `${overPct}%`;
 
     //create pctOver
     const pctOver = document.createElement("div");
     pctOver.id = `pctOver-${team.teamId}`;
     pctOver.className = 'pctOver';
-    pctOver.innerHTML = '%';
+    pctOver.innerHTML = `${underPct}%`;
 
+    //append teamLine, pctBar
     grabTeamDiv().append(teamLine, pctBar)
+    //append pctUnder, pctOver to pctBar
     const grabPctBar = () => document.getElementById(`pctBar-${team.teamId}`);
     grabPctBar().append(pctUnder, pctOver);
     //grabPctBar().append(pctUnder, pctOver);
-    //insert teamLine between Over/Under buttons
-    grabTeamDiv().append(teamLine, pctBar)
+    //append teamLine, pctBAR
+    //grabTeamDiv().append(teamLine, pctBar)
     //const insertAfter = (referenceNode, newNode) => referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
     //insertAfter(grabButtonUnder(`team-${team.teamId}-under`), teamLine);
 
@@ -81,12 +92,12 @@ const renderTeamLine = (team) => {
 
 //counter function to increase countOver in db.json
 const plusOver = () => {
-    const teamId = team.teamId;
-    const updatedTeam = teamLineArr.find(team => team.teamId === teamId);
+    //const teamId = team.teamId;
+    //const updatedTeam = teamLineArr.find(team => team.teamId === teamId);
     updatedTeam.countOver++;
     let countOver = parseInt(updatedTeam.countOver);
-    
-    
+
+    //fetch PATCH to JSON
     const countOverObj = {
         countOver
     }

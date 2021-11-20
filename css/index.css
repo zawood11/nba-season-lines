@@ -53,10 +53,30 @@ button {
     position: absolute;
     left:200px;
     bottom:10px;
-    width: 690px;
+    width: 72%;
     height: 30px;
     background-color: #04AA6D;
     text-align: center; /* To center it horizontally (if you want) */
     line-height: 30px; /* To center it vertically */
     color: white;
+}
+.pctUnder {
+    position: absolute;
+    left: 0px;
+    width: 69px;
+    height: 30px;
+    background-color: white;
+    text-align: center; /* To center it horizontally (if you want) */
+    line-height: 30px; /* To center it vertically */
+    color: black;
+}
+.pctOver {
+    position: absolute;
+    right: 0px;
+    width: 80px;
+    height: 30px;
+    background-color: green;
+    text-align: center; /* To center it horizontally (if you want) */
+    line-height: 30px; /* To center it vertically */
+    color: black;
 }

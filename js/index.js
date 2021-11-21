@@ -78,6 +78,7 @@ const renderTeamLine = (team) => {
 
     //append teamLine, pctBar
     grabTeamDiv().append(teamLine, pctBar)
+
     //append pctUnder, pctOver to pctBar
     const grabPctBar = () => document.getElementById(`pctBar-${team.teamId}`);
     grabPctBar().append(pctUnder, pctOver);
@@ -86,26 +87,31 @@ const renderTeamLine = (team) => {
     grabButtonOver(`team-${team.teamId}-over`).innerHTML += `${team.oddsOver}`;
     grabButtonUnder(`team-${team.teamId}-under`).innerHTML += `${team.oddsUnder}`;
 
+    const updatePct = () => {
+        //update total count, overpct, underpct
+        let updatedTotalCount = updatedTeam.countOver + updatedTeam.countUnder;
+        let updatedOverPct = Math.trunc((updatedTeam.countOver/updatedTotalCount)*100);
+        if (isNaN(updatedOverPct)) updatedOverPct = 0;
+        let updatedUnderPct = Math.trunc((updatedTeam.countUnder/updatedTotalCount)*100);
+        if (isNaN(updatedUnderPct)) updatedUnderPct = 0;
+
+        //over button
+        pctOver.innerHTML = `${updatedOverPct}%`;
+        let updatedOverWidth = 100 - updatedUnderPct;
+        pctOver.style.width = `${updatedOverWidth}%`;
+
+        //under button
+        pctUnder.innerHTML = `${updatedUnderPct}%`;
+        pctUnder.style.width = `${updatedUnderPct}%`;
+    }
+
 const plusOver = () => {
     //update countOver
     updatedTeam.countOver++;
     let countOver = updatedTeam.countOver;
 
-    //update total count, overpct, underpct
-    let updatedTotalCount = updatedTeam.countOver + updatedTeam.countUnder;
-    let updatedOverPct = Math.trunc((updatedTeam.countOver/updatedTotalCount)*100);
-    if (isNaN(updatedOverPct)) updatedOverPct = 0;
-    let updatedUnderPct = Math.trunc((updatedTeam.countUnder/updatedTotalCount)*100);
-    if (isNaN(updatedUnderPct)) updatedUnderPct = 0;
-
-    //over button
-    pctOver.innerHTML = `${updatedOverPct}%`;
-    let updatedOverWidth = 100 - updatedUnderPct;
-    pctOver.style.width = `${updatedOverWidth}%`;
-
-    //under button
-    pctUnder.innerHTML = `${updatedUnderPct}%`;
-    pctUnder.style.width = `${updatedUnderPct}%`;
+    //test updatePct
+    updatePct();
 
     //fetch PATCH to JSON
     const countOverObj = {
@@ -132,22 +138,9 @@ const plusUnder = () => {
     updatedTeam.countUnder++;
     let countUnder = updatedTeam.countUnder;
     
-    // update total count, overpct, underpct
-    let updatedTotalCount = updatedTeam.countOver + updatedTeam.countUnder;
-    let updatedOverPct = Math.trunc((updatedTeam.countOver/updatedTotalCount)*100);
-    if (isNaN(updatedOverPct)) updatedOverPct = 0;
-    let updatedUnderPct = Math.trunc((updatedTeam.countUnder/updatedTotalCount)*100);
-    if (isNaN(updatedUnderPct)) updatedUnderPct = 0;
+    //test updatePct
+    updatePct();
 
-    //over button
-    pctOver.innerHTML = `${updatedOverPct}%`;
-    let updatedOverWidth = 100 - updatedUnderPct;
-    pctOver.style.width = `${updatedOverWidth}%`;
-
-    //under button
-    pctUnder.innerHTML = `${updatedUnderPct}%`;
-    pctUnder.style.width = `${updatedUnderPct}%`;
-    
     const countUnderObj = {
         countUnder
     }

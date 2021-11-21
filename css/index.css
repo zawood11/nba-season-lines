@@ -6,15 +6,29 @@ body {
     text-align: center;
     color: white;
     text-emphasis: bold;
+    text-shadow: white 1px 0 10px;
     font-family: Arial, Helvetica, sans-serif;
+    padding: 10px;
 }
 #search {
     text-align: center;
+    padding: 10px;
 }
 #search-teams {
     text-align: center;
     font-size: 24pt;
+    border: 1px solid white;
+    border-radius: 5px;
+    height: 25px;
+    width: 70%;
+    padding: 2px 23px 2px 30px;
+    outline: 0;
+    background-color: #f5f5f5;
 }
+#search-teams:hover, #search-teams:focus {
+    border: 1.5px solid #009688;
+    background-color: white;
+  }
 #teams {
     background-image: url('/images/backgroundnba.jpg');
 }
@@ -30,28 +44,36 @@ body {
     width: 90%;
     height: 200px;
     border: 1px solid black;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    box-shadow: 0 4px 8px 0 white;
     transition: 0.3s;
+    padding: 10px;
 }
 .team-div:hover {
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    box-shadow: 0 8px 16px 0 white);
   }
 .team-div h2 {
     font-size: 36px;
     text-align: center;
     text-emphasis: bold;
     font-family: Arial, Helvetica, sans-serif;
+    color: black;
+    text-shadow: black 1px 0 3px;
 }
 .team-div img {
-    margin-left: 3%;
+    padding: 10px;
     height: 150px;
     width: 150px;
+    position: absolute;
+    top: 15%;
 }
 .teamLine {
     position: absolute;
     left: 53%;
-    top: 40%;
-    font-size: 36pt;
+    top: 35%;
+    width: 10%;
+    font-size: 42pt;
+    color: orange;
+    text-shadow: black 1px 0 3px;
 }
 button {
     font-size: 24px;
@@ -62,12 +84,14 @@ button {
     left: 20%;
     top: 30%;
     color: red;
+    text-shadow: black 1px 0 2px;
 }
 .team-line-over {
     position: absolute;
     left: 75%;
     top: 30%;
     color: blue;
+    text-shadow: black 1px 0 2px;
 }
 .pctBar {
     position: absolute;
@@ -88,7 +112,8 @@ button {
     background-color: red;
     text-align: center; /* To center it horizontally (if you want) */
     line-height: 30px; /* To center it vertically */
-    color: black;
+    color: white;
+    text-shadow: black 1px 0 3px;
 }
 .pctOver {
     position: absolute;
@@ -99,4 +124,14 @@ button {
     text-align: center; /* To center it horizontally (if you want) */
     line-height: 30px; /* To center it vertically */
     color: white;
+    text-shadow: black 1px 0 3px;
+}
+.card-alert-warning h2 {
+    color: white;
+    top: 50%;
+    text-align: center;
+}
+.footer {
+    color: white;
+    text-align: center;
 }

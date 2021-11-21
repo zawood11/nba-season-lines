@@ -231,20 +231,20 @@ const handleSearch = (e) => {
 
 //invoke if no search results are found
 const noResults = () => {
-    const div = document.createElement("div");
-    div.className = 'card-alert-warning';
+    const noResultsDiv = document.createElement("div");
+    noResultsDiv.className = 'card-alert-warning';
 
-    const header = document.createElement("h2")
-    header.textContent = "No teams found, please check your search and try again."
+    const header = document.createElement("h2");
+    header.textContent = "No teams found, please check your search and try again.";
 
-    div.append(header);
-    listTeams().appendChild(div);
+    noResultsDiv.append(header);
+    listTeams().appendChild(noResultsDiv);
 }
 
 //fetch API and JSON data, eventlistener on search field
 const handlePageLoaded = () => {
     fetchTeams();
-    searchTeams().addEventListener("change", handleSearch)
+    searchTeams().addEventListener("change", handleSearch);
 }
 
 //Run fetch on DOMContentLoaded

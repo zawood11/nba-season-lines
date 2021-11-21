@@ -6,8 +6,8 @@
       "teamLine": "47.5",
       "oddsOver": "-110",
       "oddsUnder": "-110",
-      "countOver": 12,
-      "countUnder": 8
+      "countOver": 17,
+      "countUnder": 16
     },
     {
       "id": "2",
@@ -16,7 +16,7 @@
       "oddsOver": "-120",
       "oddsUnder": "+100",
       "countOver": 10,
-      "countUnder": 10
+      "countUnder": 13
     },
     {
       "id": "4",
@@ -24,8 +24,8 @@
       "teamLine": "56.5",
       "oddsOver": "+105",
       "oddsUnder": "-125",
-      "countOver": 12,
-      "countUnder": 9
+      "countOver": 16,
+      "countUnder": 12
     },
     {
       "id": "5",
@@ -70,7 +70,7 @@
       "oddsOver": "-120",
       "oddsUnder": "+100",
       "countOver": 3,
-      "countUnder": 5
+      "countUnder": 9
     },
     {
       "id": "10",

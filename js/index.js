@@ -1,5 +1,7 @@
 const listTeams = () => document.getElementById("teams");
 const searchTeams = () => document.getElementById("search-teams")
+const grabSearch = () => document.getElementById("search");
+
 let teamArr = [];
 let teamLineArr = [];
 
@@ -65,14 +67,14 @@ const renderTeamLine = (team) => {
     const pctUnder = document.createElement("div");
     pctUnder.id = `pctUnder-${team.teamId}`;
     pctUnder.className = 'pctUnder';
-    pctUnder.innerHTML = `${underPct}%`;
+    pctUnder.innerHTML = `${underPct}% UNDER`;
     pctUnder.style.width = `${underPct}%`;
 
     //create pctOver
     const pctOver = document.createElement("div");
     pctOver.id = `pctOver-${team.teamId}`;
     pctOver.className = 'pctOver';
-    pctOver.innerHTML = `${overPct}%`;
+    pctOver.innerHTML = `${overPct}% OVER`;
     let overWidth = 100 - underPct;
     pctOver.style.width = `${overWidth}%`
 
@@ -96,12 +98,12 @@ const renderTeamLine = (team) => {
         if (isNaN(updatedUnderPct)) updatedUnderPct = 0;
 
         //over button
-        pctOver.innerHTML = `${updatedOverPct}%`;
+        pctOver.innerHTML = `${updatedOverPct}% OVER`;
         let updatedOverWidth = 100 - updatedUnderPct;
         pctOver.style.width = `${updatedOverWidth}%`;
 
         //under button
-        pctUnder.innerHTML = `${updatedUnderPct}%`;
+        pctUnder.innerHTML = `${updatedUnderPct}% UNDER`;
         pctUnder.style.width = `${updatedUnderPct}%`;
     }
 
@@ -162,7 +164,7 @@ const plusUnder = () => {
 
 //add eventlisteners to over/under buttons
 grabButtonOver(`team-${team.teamId}-over`).addEventListener('click', plusOver);
-grabButtonUnder(`team-${team.teamId}-under`).addEventListener('click', plusUnder)
+grabButtonUnder(`team-${team.teamId}-under`).addEventListener('click', plusUnder);
 }
 
 //iterate over API team data and pass to renderTeam
@@ -179,6 +181,9 @@ const displayTeamLineInfo = (teamLineInfo) => {
 
 //fetch GET API & JSON data
 const fetchTeams = () => {
+    listTeams().innerHTML = "";
+    searchTeams().addEventListener("change", handleSearch);
+
     fetch("https://api-nba-v1.p.rapidapi.com/teams/league/standard", {
 	"method": "GET",
 	"headers": {
@@ -220,6 +225,7 @@ const handleSearch = (e) => {
         searchedTeamLines.forEach(renderTeamLine);
     }
     searchTeams().value = "";
+    addBackBtn();
 }
 
 //invoke if no search results are found
@@ -228,17 +234,33 @@ const noResults = () => {
     noResultsDiv.className = 'card-alert-warning';
 
     const header = document.createElement("h2");
-    header.textContent = "No teams found, please check your search and try again.";
+    header.textContent = "No teams found, please check your search and try again or click the All Teams link";
 
     noResultsDiv.append(header);
     listTeams().appendChild(noResultsDiv);
+
+    addBackBtn();
 }
 
-//fetch API and JSON data, eventlistener on search field
-const handlePageLoaded = () => {
-    fetchTeams();
+const addBackBtn = () => {
+    grabSearch().innerHTML = "";
+    const input = document.createElement('input');
+    input.type = 'text';
+    input.id = 'search-teams';
+    input.placeholder = 'Search for teams here';
+    const div = document.createElement("div");
+    div.id = 'backBtn';
+    div.className = 'backBtn';
+    div.textContent = 'All Teams';
+
+    grabSearch().append(input, div);
+
     searchTeams().addEventListener("change", handleSearch);
+    
+    const grabBackBtn = () => document.getElementById("backBtn");
+    grabBackBtn().addEventListener('click', () => grabBackBtn().remove('backBtn'));
+    grabBackBtn().addEventListener('click', fetchTeams);
 }
 
 //Run fetch on DOMContentLoaded
-document.addEventListener("DOMContentLoaded", handlePageLoaded);
+document.addEventListener("DOMContentLoaded", fetchTeams);

@@ -1,3 +1,5 @@
+import {API_KEY} from "../config.js";
+
 const listTeams = () => document.getElementById("teams");
 const searchTeams = () => document.getElementById("search-teams")
 const grabSearch = () => document.getElementById("search");
@@ -188,7 +190,7 @@ const fetchTeams = () => {
 	"method": "GET",
 	"headers": {
 		"x-rapidapi-host": "api-nba-v1.p.rapidapi.com",
-		"x-rapidapi-key": "eea0f00af2msh1d7263f0e338362p1c74e0jsn3f1c0b5b1925"
+		"x-rapidapi-key": "333841ff85msh64fa51b27f50180p11c10ejsn99d059698be4"
 	}
 })
 .then(res => res.json())

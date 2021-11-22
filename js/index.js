@@ -190,7 +190,7 @@ const fetchTeams = () => {
 	"method": "GET",
 	"headers": {
 		"x-rapidapi-host": "api-nba-v1.p.rapidapi.com",
-		"x-rapidapi-key": "333841ff85msh64fa51b27f50180p11c10ejsn99d059698be4"
+		"x-rapidapi-key": API_KEY
 	}
 })
 .then(res => res.json())
